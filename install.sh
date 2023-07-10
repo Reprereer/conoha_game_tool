@@ -30,10 +30,21 @@ function stopServer() {
 	fi
 }
 
+function detectUrl() {
+	local version=$1
+
+	url=$(https://adfoc.us/serve/sitelinks/?id=271228&url=https://maven.minecraftforge.net/net/minecraftforge/forge/1.19.2-43.2.0/forge-1.19.2-43.2.0-installer.jar)
+	if [ "$url" == "" ]; then
+		echo "ERROR: Installer was not found for the version: ${version}"
+		exit 1
+	fi
+
+	temp_jarpath="/tmp/$(basename ${url})"
+}
 
 function downloadFile() {
 	echo "Downloading Minecraft Forge Server ..."
- url = ${https://adfoc.us/serve/sitelinks/?id=271228&url=https://maven.minecraftforge.net/net/minecraftforge/forge/1.19.2-43.2.0/forge-1.19.2-43.2.0-installer.jar}
+ 
     if ! wget -q -O ${temp_jarpath} ${url}; then
         echo "ERROR: Cannot download file: ${url}"
         exit 1

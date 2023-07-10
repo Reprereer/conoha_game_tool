@@ -34,7 +34,7 @@ function stopServer() {
 function downloadFile() {
 	echo "Downloading Minecraft Forge Server ..."
  
-    if ! wget -q -O ${temp_jarpath} https://adfoc.us/serve/sitelinks/?id=271228&url=https://maven.minecraftforge.net/net/minecraftforge/forge/1.19.2-43.2.0/forge-1.19.2-43.2.0-installer.jar; then
+    if ! wget -q -O ${temp_jarpath} 'https://maven.minecraftforge.net/net/minecraftforge/forge/1.19.2-43.2.0/forge-1.19.2-43.2.0-installer.jar'; then
         echo "ERROR: Cannot download file: ${url}"
         exit 1
     fi
